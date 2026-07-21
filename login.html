@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Login - Predictor Pro</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="loginScreen">
+        <div class="loginContainer">
+            
+            <!-- Logo -->
+            <div class="logoWrapper">
+                <div class="logo">🎯</div>
+                <h1>PREDICTOR PRO</h1>
+                <p class="subtitle">WinGo Multi-Game Platform</p>
+            </div>
+
+            <!-- Login Form -->
+            <div class="loginForm">
+                <div class="inputGroup">
+                    <i class="fas fa-lock"></i>
+                    <input 
+                        type="password" 
+                        id="passwordInput" 
+                        placeholder="Enter Password" 
+                        autocomplete="current-password"
+                        maxlength="20"
+                    >
+                    <button class="togglePassword" onclick="togglePassword()">
+                        <i class="fas fa-eye" id="eyeIcon"></i>
+                    </button>
+                </div>
+                
+                <button class="loginBtn" onclick="handleLogin()">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                
+                <div id="loginMsg"></div>
+            </div>
+
+            <!-- Footer -->
+            <div class="loginFooter">
+                <i class="fas fa-shield-alt"></i> Secure Login
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="login.js"></script>
+</body>
+</html>
