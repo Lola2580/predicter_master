@@ -2,55 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Login - Predictor Pro</title>
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
-
-    <div id="loginScreen">
-        <div class="loginContainer">
-            
-            <!-- Logo -->
-            <div class="logoWrapper">
-                <div class="logo">🎯</div>
-                <h1>PREDICTOR PRO</h1>
-                <p class="subtitle">WinGo Multi-Game Platform</p>
-            </div>
-
-            <!-- Login Form -->
-            <div class="loginForm">
-                <div class="inputGroup">
-                    <i class="fas fa-lock"></i>
-                    <input 
-                        type="password" 
-                        id="passwordInput" 
-                        placeholder="Enter Password" 
-                        autocomplete="current-password"
-                        maxlength="20"
-                    >
-                    <button class="togglePassword" onclick="togglePassword()">
-                        <i class="fas fa-eye" id="eyeIcon"></i>
-                    </button>
-                </div>
-                
-                <button class="loginBtn" onclick="handleLogin()">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </button>
-                
-                <div id="loginMsg"></div>
-            </div>
-
-            <!-- Footer -->
-            <div class="loginFooter">
-                <i class="fas fa-shield-alt"></i> Secure Login
-            </div>
-
-        </div>
-    </div>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Supabase JS Library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="login.js"></script>
+    
+    <style>
+        /* Stylish Glass Effect */
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Password hide dot spacing */
+        .password-spacing {
+            letter-spacing: 0.4em;
+        }
+        .password-spacing::placeholder {
+            letter-spacing: normal;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen flex items-center justify-center font-sans text-white bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center">
+
+    <!-- Dark Overlay for better contrast -->
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <!-- Login Card -->
+    <div class="glass-panel relative z-10 p-8 sm:p-10 rounded-2xl shadow-2xl w-full max-w-sm text-center transform transition-all hover:scale-[1.01]">
+        
+        <div class="mb-8">
+            <!-- Icon -->
+            <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-500/30">
+                <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            </div>
+            <h2 class="text-2xl font-bold tracking-wide">System Access</h2>
+            <p class="text-gray-400 text-sm mt-2">Enter your passcode to continue</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <input type="password" id="passwordInput" required
+                    class="w-full px-4 py-3 rounded-xl bg-gray-800/60 border border-gray-600 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/50 outline-none transition-all text-center text-lg password-spacing shadow-inner"
+                    placeholder="Enter Password">
+            </div>
+            <button type="submit" id="submitBtn"
+                class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3.5 rounded-xl shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(37,99,235,0.6)] transition-all duration-300">
+                Unlock
+            </button>
+        </form>
+
+        <!-- Status Message -->
+        <div id="statusMessage" class="mt-5 text-sm hidden font-medium"></div>
+    </div>
 </body>
 </html>
