@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Predictor Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- ===== MAIN DASHBOARD ===== -->
+    <div id="mainPage">
+        
+        <!-- HEADER -->
+        <header class="header">
+            <div class="brand">
+                <i class="fas fa-chart-line"></i>
+                <h1>PREDICTOR PRO</h1>
+            </div>
+            <div class="right-section">
+                <div id="connectionStatus" class="offline">
+                    <span class="dot"></span>
+                    <span id="statusText">Connecting...</span>
+                </div>
+                <span id="userEmail" style="color:#666;font-size:13px;">User</span>
+                <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </header>
+
+        <!-- GAME CARDS -->
+        <div class="games-grid" id="gamesGrid">
+            <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="controls-row">
+            <label class="toggle">
+                <input type="checkbox" id="beepToggle" checked>
+                <i class="fas fa-volume-up"></i> Sound
+            </label>
+            <label class="toggle">
+                <input type="checkbox" id="autoRefreshToggle" checked>
+                <i class="fas fa-sync"></i> Auto Refresh
+            </label>
+            <button class="btn btn-primary btn-sm" onclick="manualFetchAll()">
+                <i class="fas fa-redo"></i> Refresh All
+            </button>
+        </div>
+        <audio id="beepSound" src="https://www.soundjay.com/buttons/sounds/beep-01a.mp3" preload="auto"></audio>
+
+        <!-- CONSOLE LOG -->
+        <div class="console-log" id="consoleLog">
+            <div class="log-entry">
+                <span class="log-time">[System]</span>
+                <span class="log-info">🚀 All games ready...</span>
+            </div>
+        </div>
+
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+            <span class="stat-item"><i class="fas fa-database"></i> <span id="totalSaves">Total Saves: 0</span></span>
+            <span class="stat-item"><i class="fas fa-clock"></i> <span id="lastUpdateAll">Last update: --</span></span>
+            <span class="stat-item"><i class="fas fa-gamepad"></i> <span id="activeGames">Active: 4/4</span></span>
+            <span class="stat-item"><i class="fas fa-check-circle"></i> <span id="saveStatusAll">All running</span></span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
